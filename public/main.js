@@ -17,9 +17,18 @@ async function saveFormHandler(event) {
         event.preventDefault();
         const name = document.querySelector('[name="form_name"]').value;
         const uid = document.querySelector('[name="form_uid"]').value;
-    
-        await savedForm({form_uid: uid, form_name: name});
-        await savedFields(uid);
+        
+        const checkValidUuid = await getFormByUuid(uid);
+        
+        if(checkValidUuid.data.result) {
+            document.body.insertAdjacentHTML("beforeend", `<div class="form-field" id="form_uid-error">
+                <h3>Form_uid - должен быть уникальным!</h3>
+            </div>`);
+        } else {
+            document.getElementById('form_uid-error').remove();
+            await savedForm({form_uid: uid, form_name: name});
+            await savedFields(uid);
+        }
     } catch(error) {
         console.error(`saveFormHandler: ${error}`);
     }
@@ -43,6 +52,21 @@ async function saveFieldsHandler(event) {
         addFieldsInForm({name: field_name, type: field_type, desc: field_desc});
     } catch(error) {
         console.error(`saveFieldsHandler: ${error}`);
+    }
+}
+
+async function getFormByUuid(uuid) {
+    try {   
+        return await axios.post(api.route, {
+            "jsonrpc": "2.0",
+            "method": "form.getFormByUuid",
+            "params": {
+                "form_uid": uuid
+            }
+        })
+    } catch(error) {
+        console.error(`getFormByUuid: ${error}`);
+        return new Error(error);
     }
 }
 

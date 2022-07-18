@@ -1,3 +1,3 @@
 const api = {
-    route: 'https://safe-inlet-43213.herokuapp.com/rpc'
+    route: 'https://vast-reaches-02528.herokuapp.com/rpc'
 };
