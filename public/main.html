@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+    <hmtl lang="en">
+        <head>
+            <meta charset="utf-8" />
+            <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+            <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+            <script prefer src="main.js"></script>
+            <script src="constant_api_route.js"></script>
+            <link rel="stylesheet" href="./main.css">
+            <title>Data</title>
+        </head>
+        <body>
+            <form id="form-main">
+                <div class="form-properties">
+                    <h2>
+                        Название формы
+                    </h2>
+                    <label>
+                        <input type="text" name="form_name" placeholder="Название формы" id="form_name">
+                    </label>
+                    <h2>
+                        Уникальный uid формы
+                    </h2>
+                    <label>
+                        <input type="text" name="form_uid" placeholder="uid формы">
+                    </label>
+                </div>
+
+                <form action="" id="form_add_fields">
+                    <div class="form-properties--fields">
+                        <h3>Название поля</h3>
+                        <label>
+                            <input type="text" name="field_name" placeholder="Название поля">
+                        </label>
+                        <h3>Описание поля</h3>
+                        <label>
+                            <input type="text" name="description" placeholder="Описание поля">
+                        </label>
+                        <h3>Выберите тип поля</h3>
+                        <select name="type_field" autofocus required>
+                            <option value="input">Текст</option>
+                            <option value="textarea">Абзац</option>
+                            <option value="select">Список</option>
+                        </select>
+                    </div>
+                    <button id="add-field-btn" type="submit" onclick=saveFieldsHandler(event)>Добавить поле</button>
+                </form>
+
+                <button type="submit" onclick=saveFormHandler(event) id="add-form-btn" disabled>Отправить</button>
+            </form>
+        </body>
+        <script>
+
+        </script>
+</hmtl>
