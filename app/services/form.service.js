@@ -16,6 +16,7 @@ class FormService {
             callback(null, savedForm);
         } catch(error) {    
             console.error(`FormService | saveForm : ${error}`);
+            callback(error, null);
         }
     }
     /**

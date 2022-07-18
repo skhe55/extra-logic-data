@@ -15,7 +15,14 @@ router.post("", (req, res) => {
     if(req.body.method.split('.')[0] === 'type_fields') {
         try {
             rpcApi.type_fields[req.body.method.split('.')[1]](req.body.params, function (err, result) {
-                if(err) throw new Error(err);
+                if(err) res.json({
+                    error: {
+                    code: -32601,
+                    message:`Internal error: ${err}`,
+                },
+                name:'Error', 
+                id:req.body.id 
+                });
                 res.json({jsonrpc: '2.0', result: result, id:req.body.id});
             })
         } catch(error) {
@@ -31,7 +38,14 @@ router.post("", (req, res) => {
     } else if(req.body.method.split('.')[0] === 'form_fields') {
         try {
             rpcApi.form_fields[req.body.method.split('.')[1]](req.body.params, req.body.id, function (err, result) {
-                if(err) throw new Error(err);
+                if(err) res.json({
+                    error: {
+                    code: -32601,
+                    message:`Internal error: ${err}`,
+                },
+                name:'Error', 
+                id:req.body.id 
+                });
                 res.json({jsonrpc: '2.0', result: result, id:req.body.id});
             })
         } catch(error) {
@@ -47,7 +61,14 @@ router.post("", (req, res) => {
     } else if(req.body.method.split('.')[0] === 'form') {
         try {
             rpcApi.form[req.body.method.split('.')[1]](req.body.params, function (err, result) {
-                if(err) throw new Error(err);
+                if(err) res.json({
+                    error: {
+                    code: -32601,
+                    message:`Internal error: ${err}`,
+                },
+                name:'Error', 
+                id:req.body.id 
+                });
                 res.json({jsonrpc: '2.0', result: result, id:req.body.id});
             })
         } catch(error) {
