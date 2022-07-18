@@ -24,3 +24,7 @@
 - `npx sequelize-cli db:seed:all`
 - `yarn dev`
 > сервис будет доступен по адресу http://localhost:3001, так же замените api роуты в файле public/constant_api_route.js на локальные.
+
+## Тестовый дамп базы данных
+
+> form_data_backup - custom format
