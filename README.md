@@ -13,6 +13,9 @@
 
 > ExpressJS, Sequelize ORM, PostgreSQL, JS, HTML, CSS
 
+# Xmind схема структуры проекта
+<img src="./XmindData.png"/>
+
 # Локальный деплой
 
 > Перед развертыванием, убедитесь что указаны правильные конфиг переменные app/config/config.js (миграции, сиды), app/config/db.config.js (подключение sequelize к бд).
